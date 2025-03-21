@@ -1,7 +1,3 @@
-Here’s a complete **GitHub README** structure for setting up and cloning a repository when using **multiple GitHub accounts**. This includes all necessary steps, from setting up SSH keys for multiple accounts to cloning repositories from the respective accounts.
-
----
-
 # **Steps to Clone a Repository from a Specific GitHub Account**
 
 ## **Cloning the Repository**
