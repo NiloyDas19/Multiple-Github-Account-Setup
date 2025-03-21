@@ -1,4 +1,4 @@
-# Client Repository Setup Guide
+# Steps to Clone a Repository from a Specific GitHub Account
 
 ## Cloning the Repository
 
