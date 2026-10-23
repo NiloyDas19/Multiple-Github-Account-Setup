@@ -128,6 +128,65 @@ Once you have cloned the repository, follow these steps to set up the project:
 
 ---
 
+---
+
+## **Setting Up Commit Signing for the Verified Badge**
+
+Cloning and pushing code via an SSH alias ensures your files transfer securely, but it **does not verify your identity on commit blocks**. To ensure your commits show the green **Verified** badge on GitHub, you must link your local author profile to your cryptographic keys inside the repository using the `--local` flag.
+
+### 1. **Configure the Local Repository Identity**
+
+Navigate into your newly cloned project folder and execute the commands matching the profile you want to use.
+
+#### **For a Personal Repository:**
+```bash
+# Set your author profile details locally
+git config --local user.name "Your Personal Name"
+git config --local user.email "your_email@example.com"
+
+# Turn on the SSH commit signing engine automatically
+git config --local gpg.format ssh
+git config --local commit.gpgSign true
+
+# Explicitly link your personal public key for signing
+git config --local user.signingkey "~/.ssh/id_rsa_personal.pub"
+```
+
+#### **For a Work Repository:**
+```bash
+# Set your author profile details locally
+git config --local user.name "Your Work Name"
+git config --local user.email "your_email@work.com"
+
+# Turn on the SSH commit signing engine automatically
+git config --local gpg.format ssh
+git config --local commit.gpgSign true
+
+# Explicitly link your work public key for signing
+git config --local user.signingkey "~/.ssh/id_rsa_work.pub"
+```
+
+### 2. **Add the Signing Key Permissions to GitHub**
+
+GitHub treats **Authentication Keys** (used to push/pull code) and **Signing Keys** (used for the green badge) as separate properties. You must upload your public key a second time specifically for verification.
+
+#### **For Personal Account:**
+- Copy the contents of the public key:
+  ```bash
+  cat ~/.ssh/id_rsa_personal.pub
+  ```
+- Go to **GitHub > Settings > SSH and GPG Keys**, click **New SSH Key**, change **Key type** to **Signing Key**, and add it.
+
+#### **For Work Account:**
+- Copy the contents of the public key:
+  ```bash
+  cat ~/.ssh/id_rsa_work.pub
+  ```
+- Go to **GitHub > Settings > SSH and GPG Keys**, click **New SSH Key**, change **Key type** to **Signing Key**, and add it.
+
+---
+
+
 ## **Troubleshooting**
 
 1. **SSH Key Issues**:
